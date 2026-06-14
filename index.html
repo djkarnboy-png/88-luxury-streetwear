@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8:8 | Beyond Limits</title>
+  <meta name="description" content="8:8 is a luxury streetwear universe built around infinity, evolution, symbolism, and exclusivity." />
+  <style>
+    :root {
+      --obsidian: #080808;
+      --charcoal: #141414;
+      --charcoal-2: #1d1d1f;
+      --chrome: #c7c7c7;
+      --white: #f5f5f5;
+      --blue: #4d7cfe;
+      --blue-soft: rgba(77, 124, 254, 0.32);
+      --glass: rgba(245, 245, 245, 0.065);
+      --line: rgba(245, 245, 245, 0.15);
+      --shadow: rgba(0, 0, 0, 0.72);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--obsidian);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Arial", sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at var(--mx, 50%) var(--my, 28%), rgba(77, 124, 254, 0.18), transparent 18rem),
+        linear-gradient(180deg, #050505 0%, var(--obsidian) 42%, #0c0c0d 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      opacity: 0.45;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    .button {
+      border: 1px solid rgba(245, 245, 245, 0.22);
+      border-radius: 999px;
+      background: rgba(245, 245, 245, 0.06);
+      color: var(--white);
+      padding: 0.95rem 1.35rem;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      font: 700 0.72rem/1 "Inter", "Arial", sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      transition: transform 260ms ease, border-color 260ms ease, background 260ms ease, box-shadow 260ms ease;
+    }
+
+    button:hover,
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 124, 254, 0.74);
+      background: rgba(77, 124, 254, 0.14);
+      box-shadow: 0 0 34px rgba(77, 124, 254, 0.22);
+    }
+
+    .button.primary {
+      background: var(--white);
+      color: var(--obsidian);
+      border-color: var(--white);
+      box-shadow: 0 0 42px rgba(245, 245, 245, 0.18);
+    }
+
+    .button.primary:hover {
+      color: var(--white);
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 0 48px rgba(77, 124, 254, 0.42);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3.5rem);
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.82), rgba(8, 8, 8, 0));
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 900;
+      font-size: 1.08rem;
+      letter-spacing: 0.18em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      color: var(--chrome);
+      box-shadow: inset 0 0 18px rgba(199, 199, 199, 0.08), 0 0 20px rgba(77, 124, 254, 0.12);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      width: 12px;
+      height: 18px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      position: absolute;
+      transform: rotate(38deg);
+    }
+
+    .brand-mark::after {
+      transform: rotate(-38deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2.8vw, 2.25rem);
+      color: rgba(245, 245, 245, 0.72);
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: color 220ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .bag {
+      width: 42px;
+      aspect-ratio: 1;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 6rem 1rem 4rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -4;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.88)),
+        url("assets/campaign-88.png") center/cover no-repeat;
+      filter: saturate(0.78) contrast(1.1) brightness(0.58);
+      transform: scale(1.04);
+      animation: atmosphericDrift 18s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 50% 38%, transparent 0 14rem, rgba(8, 8, 8, 0.22) 19rem, rgba(8, 8, 8, 0.72) 100%),
+        repeating-linear-gradient(115deg, transparent 0 26px, rgba(245, 245, 245, 0.035) 27px, transparent 28px 92px);
+      mix-blend-mode: screen;
+      opacity: 0.62;
+    }
+
+    #particle-field {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.86;
+    }
+
+    .hero-content {
+      width: min(100%, var(--max));
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: 1.35rem;
+      padding-top: 4rem;
+    }
+
+    .system-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: rgba(245, 245, 245, 0.62);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+    }
+
+    .system-row::before,
+    .system-row::after {
+      content: "";
+      width: min(18vw, 156px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(199, 199, 199, 0.5), transparent);
+    }
+
+    .orbital-mark {
+      position: relative;
+      width: clamp(158px, 24vw, 270px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin: 0.3rem 0;
+      filter: drop-shadow(0 0 34px rgba(77, 124, 254, 0.28));
+    }
+
+    .orbital-mark .ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(199, 199, 199, 0.22);
+      border-radius: 50%;
+      animation: rotateSlow 24s linear infinite;
+    }
+
+    .orbital-mark .ring:nth-child(2) {
+      inset: 13%;
+      transform: rotate(60deg);
+      border-style: dashed;
+      animation-duration: 18s;
+      animation-direction: reverse;
+      opacity: 0.7;
+    }
+
+    .orbital-mark .ring:nth-child(3) {
+      inset: 26%;
+      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+      border-radius: 0;
+      animation-duration: 14s;
+      opacity: 0.6;
+    }
+
+    .eight-symbol {
+      position: relative;
+      width: 72%;
+      aspect-ratio: 1.45;
+      display: grid;
+      place-items: center;
+      animation: symbolMorph 8s ease-in-out infinite;
+    }
+
+    .eight-symbol::before,
+    .eight-symbol::after {
+      content: "";
+      position: absolute;
+      width: 48%;
+      height: 74%;
+      border: 2px solid rgba(245, 245, 245, 0.82);
+      border-radius: 50%;
+      box-shadow:
+        inset 0 0 20px rgba(77, 124, 254, 0.16),
+        0 0 28px rgba(199, 199, 199, 0.18);
+    }
+
+    .eight-symbol::before {
+      left: 8%;
+      transform: rotate(40deg);
+    }
+
+    .eight-symbol::after {
+      right: 8%;
+      transform: rotate(-40deg);
+    }
+
+    .colon {
+      position: absolute;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .colon span {
+      width: 0.48rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 22px rgba(77, 124, 254, 0.9);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.6rem, 12vw, 10.8rem);
+      line-height: 0.86;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      font-weight: 950;
+      max-width: 11ch;
+      text-shadow: 0 20px 72px var(--shadow);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: rgba(245, 245, 245, 0.76);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: center;
+      margin-top: 0.6rem;
+    }
+
+    .scroll-signal {
+      position: absolute;
+      left: 50%;
+      bottom: 1.5rem;
+      translate: -50% 0;
+      display: grid;
+      gap: 0.55rem;
+      justify-items: center;
+      color: rgba(245, 245, 245, 0.52);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scroll-signal span {
+      width: 1px;
+      height: 46px;
+      background: linear-gradient(transparent, var(--white), transparent);
+      animation: pulseLine 1.8s ease-in-out infinite;
+    }
+
+    section {
+      position: relative;
+      padding: clamp(4.5rem, 10vw, 8rem) clamp(1rem, 4vw, 3.5rem);
+    }
+
+    .section-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 0.68rem;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.6rem, 6vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      max-width: 850px;
+    }
+
+    .section-copy {
+      margin-top: 1.1rem;
+      max-width: 620px;
+      color: rgba(245, 245, 245, 0.68);
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .collection-grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .product-card {
+      min-height: 520px;
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(77, 124, 254, 0.16), transparent 15rem),
+        linear-gradient(145deg, rgba(245, 245, 245, 0.08), rgba(245, 245, 245, 0.02));
+      box-shadow: 0 34px 80px rgba(0, 0, 0, 0.42);
+      isolation: isolate;
+      transform-style: preserve-3d;
+      transition: transform 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: linear-gradient(120deg, transparent 35%, rgba(245, 245, 245, 0.16), transparent 58%);
+      transform: translateX(-42%) rotate(12deg);
+      transition: transform 700ms ease;
+      z-index: 1;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(77, 124, 254, 0.55);
+      box-shadow: 0 38px 96px rgba(0, 0, 0, 0.62), 0 0 46px rgba(77, 124, 254, 0.16);
+    }
+
+    .product-card:hover::before {
+      transform: translateX(44%) rotate(12deg);
+    }
+
+    .product-visual {
+      height: 72%;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .product-visual img {
+      width: min(92%, 430px);
+      filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.68));
+      transition: transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 650ms ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.07) rotate(-1deg);
+      filter: drop-shadow(0 34px 54px rgba(77, 124, 254, 0.18));
+    }
+
+    .product-meta {
+      position: absolute;
+      left: 1.2rem;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 1rem;
+    }
+
+    .product-meta h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .product-meta p {
+      margin-top: 0.5rem;
+      color: rgba(245, 245, 245, 0.58);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      color: var(--chrome);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .philosophy {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 22%, rgba(77, 124, 254, 0.14), transparent 18rem),
+        linear-gradient(180deg, rgba(20, 20, 20, 0.22), rgba(8, 8, 8, 0.96));
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 7vw, 6rem);
+      align-items: center;
+    }
+
+    .infinity-art {
+      min-height: 560px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .infinity-art::before {
+      content: "";
+      width: min(84vw, 520px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(199, 199, 199, 0.18);
+      border-radius: 50%;
+      background:
+        conic-gradient(from 90deg, transparent, rgba(77, 124, 254, 0.22), transparent 34%, rgba(245, 245, 245, 0.12), transparent 74%),
+        radial-gradient(circle, rgba(245, 245, 245, 0.05), transparent 62%);
+      filter: blur(0.1px);
+      animation: rotateSlow 28s linear infinite;
+    }
+
+    .infinity-art .loop {
+      position: absolute;
+      width: min(64vw, 430px);
+      aspect-ratio: 1.9;
+      border: 2px solid rgba(245, 245, 245, 0.58);
+      border-radius: 50%;
+      transform: rotate(34deg);
+      box-shadow: 0 0 50px rgba(77, 124, 254, 0.18);
+      mix-blend-mode: screen;
+    }
+
+    .infinity-art .loop:nth-child(2) {
+      transform: rotate(-34deg);
+    }
+
+    .symbol-cloud {
+      position: absolute;
+      inset: 0;
+    }
+
+    .glyph {
+      position: absolute;
+      color: rgba(245, 245, 245, 0.5);
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      border-radius: 999px;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(8, 8, 8, 0.28);
+      backdrop-filter: blur(12px);
+      animation: fadeSymbol 6s ease-in-out infinite;
+    }
+
+    .glyph:nth-child(1) { top: 9%; left: 11%; animation-delay: 0s; }
+    .glyph:nth-child(2) { top: 34%; right: 2%; animation-delay: 1.2s; }
+    .glyph:nth-child(3) { bottom: 17%; left: 5%; animation-delay: 2.1s; }
+    .glyph:nth-child(4) { bottom: 9%; right: 20%; animation-delay: 3.2s; }
+
+    .symbols {
+      background: #090909;
+    }
+
+    .symbol-grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .symbol-tile {
+      min-height: 230px;
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      border-radius: 8px;
+      padding: 1rem;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(77, 124, 254, 0.13), transparent 9rem),
+        rgba(245, 245, 245, 0.035);
+      display: grid;
+      align-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .symbol-tile::after {
+      content: attr(data-meaning);
+      position: absolute;
+      inset: auto 0 0;
+      padding: 1rem;
+      min-height: 46%;
+      display: flex;
+      align-items: end;
+      color: rgba(245, 245, 245, 0.82);
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.92));
+      transform: translateY(100%);
+      transition: transform 320ms ease;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .symbol-tile:hover::after {
+      transform: translateY(0);
+    }
+
+    .symbol-icon {
+      height: 96px;
+      display: grid;
+      place-items: center;
+      color: var(--chrome);
+    }
+
+    .symbol-icon svg {
+      width: 90px;
+      height: 90px;
+      overflow: visible;
+    }
+
+    .symbol-tile h3 {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 245, 245, 0.8);
+    }
+
+    .campaign {
+      padding-left: 0;
+      padding-right: 0;
+      overflow: hidden;
+      background: linear-gradient(180deg, #080808, #0f0f10);
+    }
+
+    .campaign-head {
+      padding: 0 clamp(1rem, 4vw, 3.5rem);
+    }
+
+    .scroll-track {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 clamp(1rem, 4vw, 3.5rem) 1rem;
+      scrollbar-color: var(--blue) var(--charcoal);
+    }
+
+    .story-panel {
+      min-width: min(82vw, 860px);
+      min-height: 580px;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      background: #111;
+    }
+
+    .story-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.75) contrast(1.08) brightness(0.72);
+      transition: transform 900ms ease;
+    }
+
+    .story-panel:hover img {
+      transform: scale(1.04);
+    }
+
+    .story-copy {
+      position: absolute;
+      inset: auto 0 0;
+      padding: clamp(1.2rem, 4vw, 2rem);
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.92));
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .story-copy .symbol {
+      width: max-content;
+      color: var(--blue);
+      border: 1px solid rgba(77, 124, 254, 0.42);
+      border-radius: 999px;
+      padding: 0.42rem 0.68rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .story-copy h3 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .story-copy p {
+      max-width: 560px;
+      color: rgba(245, 245, 245, 0.68);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .product-page {
+      background:
+        linear-gradient(90deg, rgba(245, 245, 245, 0.025) 1px, transparent 1px),
+        radial-gradient(circle at 18% 18%, rgba(77, 124, 254, 0.12), transparent 17rem),
+        #080808;
+      background-size: 86px 86px, auto, auto;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .product-stage {
+      min-height: 660px;
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(77, 124, 254, 0.18), transparent 17rem),
+        linear-gradient(145deg, rgba(245, 245, 245, 0.06), rgba(245, 245, 245, 0.015));
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-stage::before {
+      content: "";
+      position: absolute;
+      width: 66%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(245, 245, 245, 0.11);
+      border-radius: 50%;
+      animation: rotateSlow 22s linear infinite;
+    }
+
+    .rotating-product {
+      width: min(85%, 560px);
+      position: relative;
+      z-index: 2;
+      animation: floatProduct 5s ease-in-out infinite;
+      filter: drop-shadow(0 44px 62px rgba(0, 0, 0, 0.66));
+    }
+
+    .product-info {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .product-info h2 {
+      font-size: clamp(2.8rem, 6vw, 6.4rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .product-info p {
+      color: rgba(245, 245, 245, 0.7);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .detail {
+      border: 1px solid rgba(245, 245, 245, 0.12);
+      border-radius: 8px;
+      padding: 1rem;
+      background: rgba(245, 245, 245, 0.035);
+    }
+
+    .detail strong {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--chrome);
+      margin-bottom: 0.5rem;
+    }
+
+    .detail span {
+      color: rgba(245, 245, 245, 0.66);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .sizes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .sizes button {
+      width: 52px;
+      height: 44px;
+      padding: 0;
+      border-radius: 8px;
+      letter-spacing: 0;
+    }
+
+    .archive {
+      background:
+        radial-gradient(circle at 76% 12%, rgba(77, 124, 254, 0.12), transparent 19rem),
+        #0a0a0a;
+    }
+
+    .archive-grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1rem;
+    }
+
+    .archive-card,
+    .manifesto {
+      border: 1px solid rgba(245, 245, 245, 0.14);
+      border-radius: 8px;
+      padding: clamp(1rem, 3vw, 2rem);
+      background:
+        linear-gradient(135deg, rgba(245, 245, 245, 0.06), rgba(245, 245, 245, 0.018)),
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(245, 245, 245, 0.035) 32px);
+    }
+
+    .archive-card h3,
+    .manifesto h3 {
+      font-size: 0.78rem;
+      color: var(--blue);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .archive-card p,
+    .manifesto p {
+      color: rgba(245, 245, 245, 0.72);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .archive-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .archive-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      border-top: 1px solid rgba(245, 245, 245, 0.12);
+      padding-top: 1rem;
+    }
+
+    .archive-row span {
+      color: rgba(245, 245, 245, 0.44);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem clamp(1rem, 4vw, 3.5rem);
+      background: #050505;
+      border-top: 1px solid rgba(245, 245, 245, 0.1);
+    }
+
+    .footer-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: end;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-logo {
+      font-size: clamp(4rem, 14vw, 11rem);
+      line-height: 0.8;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .footer-tag {
+      margin-top: 0.9rem;
+      color: rgba(245, 245, 245, 0.6);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .socials a {
+      width: 44px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(245, 245, 245, 0.16);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: rgba(245, 245, 245, 0.72);
+      transition: border-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .socials a:hover {
+      color: var(--white);
+      border-color: var(--blue);
+      box-shadow: 0 0 24px rgba(77, 124, 254, 0.22);
+    }
+
+    .infinity-line {
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      bottom: 1rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(77, 124, 254, 0.9), rgba(245, 245, 245, 0.8), transparent);
+      animation: footerLine 4s ease-in-out infinite;
+    }
+
+    @keyframes atmosphericDrift {
+      from { transform: scale(1.04) translate3d(-1%, -0.5%, 0); }
+      to { transform: scale(1.09) translate3d(1.2%, 0.8%, 0); }
+    }
+
+    @keyframes rotateSlow {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes symbolMorph {
+      0%, 100% { transform: scale(1) rotate(0deg); filter: blur(0); }
+      38% { transform: scale(0.94) rotate(45deg); filter: blur(0.2px); }
+      70% { transform: scale(1.06) rotate(-12deg); }
+    }
+
+    @keyframes pulseLine {
+      0%, 100% { opacity: 0.25; transform: scaleY(0.6); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    @keyframes fadeSymbol {
+      0%, 100% { opacity: 0.25; transform: translateY(8px); }
+      50% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatProduct {
+      0%, 100% { transform: translateY(0) rotateY(-7deg); }
+      50% { transform: translateY(-18px) rotateY(7deg); }
+    }
+
+    @keyframes footerLine {
+      0%, 100% { transform: translateX(-8%) scaleX(0.8); opacity: 0.35; }
+      50% { transform: translateX(8%) scaleX(1); opacity: 0.9; }
+    }
+
+    @media (max-width: 940px) {
+      .nav-links {
+        display: none;
+      }
+
+      .collection-grid,
+      .philosophy-grid,
+      .product-layout,
+      .archive-grid,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-grid,
+      .symbol-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .product-card {
+        min-height: 450px;
+      }
+
+      .product-stage {
+        min-height: 520px;
+      }
+
+      .footer-inner {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        min-height: 92svh;
+      }
+
+      .hero-actions,
+      .detail-grid,
+      .collection-grid,
+      .symbol-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        display: grid;
+        width: min(100%, 360px);
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .collection-grid,
+      .symbol-grid {
+        display: grid;
+      }
+
+      .symbol-tile {
+        min-height: 190px;
+      }
+
+      .story-panel {
+        min-width: 88vw;
+        min-height: 520px;
+      }
+
+      .archive-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top" aria-label="8:8 home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>8:8</span>
+    </a>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#symbols">Symbols</a>
+      <a href="#product">Product</a>
+      <a href="#archive">Archive</a>
+    </div>
+    <button class="bag" type="button" aria-label="Open bag">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 8.5H17.5L18.5 21H5.5L6.5 8.5Z" stroke="currentColor" stroke-width="1.5" />
+        <path d="M9 8.5V6.75C9 5.09 10.34 3.75 12 3.75C13.66 3.75 15 5.09 15 6.75V8.5" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </button>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="8:8 cinematic entrance">
+      <canvas id="particle-field" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="system-row">Signal 08.08 | Infinite Evolution</div>
+        <div class="orbital-mark" aria-hidden="true">
+          <span class="ring"></span>
+          <span class="ring"></span>
+          <span class="ring"></span>
+          <span class="eight-symbol"><span class="colon"><span></span><span></span></span></span>
+        </div>
+        <h1>Beyond Limits</h1>
+        <p>Created for those who never stop evolving.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#collection">Shop Collection</a>
+          <a class="button" href="#symbols">Explore Universe</a>
+        </div>
+      </div>
+      <div class="scroll-signal" aria-hidden="true"><span></span>Enter</div>
+    </section>
+
+    <section id="collection" aria-labelledby="featured-title">
+      <div class="section-inner">
+        <p class="eyebrow">Featured Collection</p>
+        <h2 class="section-title" id="featured-title">Objects for the next state.</h2>
+        <p class="section-copy">Each piece is treated like a signal artifact: technical, minimal, and charged with symbols that reveal themselves slowly.</p>
+        <div class="collection-grid">
+          <article class="product-card">
+            <div class="product-visual"><img src="assets/jacket-88.png" alt="Black technical jacket with chrome details" /></div>
+            <div class="product-meta">
+              <div>
+                <h3>Loop Shell 08</h3>
+                <p>Weather-shielded nylon, hidden geometry seams.</p>
+              </div>
+              <span class="price">$880</span>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual"><img src="assets/jacket-88.png" alt="Floating black luxury streetwear jacket" /></div>
+            <div class="product-meta">
+              <div>
+                <h3>Signal Jacket</h3>
+                <p>Chrome hardware, modular collar, coded lining.</p>
+              </div>
+              <span class="price">$1,080</span>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual"><img src="assets/jacket-88.png" alt="Premium black futuristic outerwear" /></div>
+            <div class="product-meta">
+              <div>
+                <h3>Threshold Coat</h3>
+                <p>Oversized silhouette with concealed ritual pockets.</p>
+              </div>
+              <span class="price">$1,480</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy" aria-labelledby="space-title">
+      <div class="section-inner philosophy-grid">
+        <div class="infinity-art" aria-hidden="true">
+          <span class="loop"></span>
+          <span class="loop"></span>
+          <div class="symbol-cloud">
+            <span class="glyph">N 08.08</span>
+            <span class="glyph">Phase 02</span>
+            <span class="glyph">Open Limit</span>
+            <span class="glyph">Axis 88</span>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Philosophy</p>
+          <h2 class="section-title" id="space-title">The Space Between</h2>
+          <p class="section-copy">8:8 represents the moment between who you are and who you become.</p>
+          <p class="section-copy">The mark is a gate, a mirror, and a coordinate. Every garment is designed as a quiet artifact from that threshold.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="symbols" id="symbols" aria-labelledby="symbols-title">
+      <div class="section-inner">
+        <p class="eyebrow">Signature Symbols</p>
+        <h2 class="section-title" id="symbols-title">A visual language for hidden movement.</h2>
+        <div class="symbol-grid">
+          <article class="symbol-tile" data-meaning="The infinite path: a loop that returns changed, never the same.">
+            <div class="symbol-icon">
+              <svg viewBox="0 0 100 100" fill="none"><path d="M18 50C26 24 45 24 50 50C55 76 74 76 82 50C74 24 55 24 50 50C45 76 26 76 18 50Z" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Infinity Mark</h3>
+          </article>
+          <article class="symbol-tile" data-meaning="Coordinates for the point where identity becomes intention.">
+            <div class="symbol-icon">
+              <svg viewBox="0 0 100 100" fill="none"><path d="M50 10V90M10 50H90M28 28L72 72M72 28L28 72" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="50" r="12" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Coordinates</h3>
+          </article>
+          <article class="symbol-tile" data-meaning="An unknown symbol used to mark unreleased concepts and private drops.">
+            <div class="symbol-icon">
+              <svg viewBox="0 0 100 100" fill="none"><path d="M50 14L78 36V72L50 88L22 72V36L50 14Z" stroke="currentColor" stroke-width="2"/><path d="M34 50H66M50 30V70" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Unknown Sign</h3>
+          </article>
+          <article class="symbol-tile" data-meaning="Navigation lines for moving through uncertainty without losing direction.">
+            <div class="symbol-icon">
+              <svg viewBox="0 0 100 100" fill="none"><path d="M18 76L50 18L82 76L50 62L18 76Z" stroke="currentColor" stroke-width="2"/><path d="M50 18V62" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Navigator</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="campaign" aria-labelledby="campaign-title">
+      <div class="campaign-head">
+        <div class="section-inner">
+          <p class="eyebrow">Collection Showcase</p>
+          <h2 class="section-title" id="campaign-title">Campaign fragments from the 8:8 universe.</h2>
+        </div>
+      </div>
+      <div class="scroll-track" aria-label="Horizontal collection stories">
+        <article class="story-panel">
+          <img src="assets/campaign-88.png" alt="8:8 dark futuristic streetwear campaign" />
+          <div class="story-copy">
+            <span class="symbol">Symbol 08</span>
+            <h3>Threshold</h3>
+            <p>A collection about the first step into the unknown: reflective shells, coded trims, and silhouettes that feel discovered rather than released.</p>
+          </div>
+        </article>
+        <article class="story-panel">
+          <img src="assets/jacket-88.png" alt="8:8 floating product campaign object" />
+          <div class="story-copy">
+            <span class="symbol">Axis 88</span>
+            <h3>Loop System</h3>
+            <p>Outerwear as equipment for transformation. Each closure, pocket, and seam is placed like a coordinate on a private map.</p>
+          </div>
+        </article>
+        <article class="story-panel">
+          <img src="assets/campaign-88.png" alt="Luxury streetwear editorial with constellation grid" />
+          <div class="story-copy">
+            <span class="symbol">N 08.08</span>
+            <h3>Afterimage</h3>
+            <p>Campaign imagery built like a secret transmission, half fashion editorial and half celestial interface.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="product-page" id="product" aria-labelledby="product-title">
+      <div class="section-inner product-layout">
+        <div class="product-stage">
+          <img class="rotating-product" src="assets/jacket-88.png" alt="Loop Shell 08 technical jacket product view" />
+        </div>
+        <div class="product-info">
+          <p class="eyebrow">Product Page</p>
+          <h2 id="product-title">Loop Shell 08</h2>
+          <p>A minimal luxury shell engineered for movement through weather, city light, and private rituals. The rotating form reveals chrome hardware, infinity seam language, and layered technical fabric.</p>
+          <div class="detail-grid">
+            <div class="detail"><strong>360 View</strong><span>Slow object rotation for dimensional inspection.</span></div>
+            <div class="detail"><strong>Fabric Zoom</strong><span>Matte nylon face, bonded lining, reflective micro-grid.</span></div>
+            <div class="detail"><strong>Styling</strong><span>Wide cargo trouser, sculptural boot, silver utility chain.</span></div>
+            <div class="detail"><strong>Size Guide</strong><span>Oversized fit. Size down for closer structure.</span></div>
+          </div>
+          <div class="sizes" aria-label="Available sizes">
+            <button type="button">XS</button>
+            <button type="button">S</button>
+            <button type="button">M</button>
+            <button type="button">L</button>
+            <button type="button">XL</button>
+          </div>
+          <a class="button primary" href="#collection">Request Access</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="archive" id="archive" aria-labelledby="archive-title">
+      <div class="section-inner">
+        <p class="eyebrow">About 8:8</p>
+        <h2 class="section-title" id="archive-title">Not a story. A classified archive.</h2>
+        <div class="archive-grid">
+          <article class="archive-card">
+            <h3>Origin Philosophy</h3>
+            <p>8:8 began as a symbol for the charged interval between existence and becoming. The brand treats clothing as evidence from that interval: precise, coded, and built to outlast trend cycles.</p>
+          </article>
+          <div class="manifesto">
+            <h3>Manifesto</h3>
+            <div class="archive-list">
+              <div class="archive-row"><span>001</span><p>Move quietly. Signal clearly.</p></div>
+              <div class="archive-row"><span>002</span><p>Every limit is a temporary interface.</p></div>
+              <div class="archive-row"><span>003</span><p>The future is not loud. It is exact.</p></div>
+              <div class="archive-row"><span>004</span><p>Wear the threshold. Become the next version.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">8:8</div>
+        <div class="footer-tag">Beyond Limits</div>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4V15.2C14 17.85 11.85 20 9.2 20C6.8 20 5 18.22 5 16C5 13.62 6.94 12 9.1 12C9.63 12 10.1 12.08 10.5 12.24V15.05C10.17 14.82 9.76 14.7 9.3 14.7C8.36 14.7 7.65 15.28 7.65 16.1C7.65 16.95 8.35 17.55 9.22 17.55C10.32 17.55 11.15 16.7 11.15 15.28V4H14ZM14 4C14.52 6.6 16.06 8.2 19 8.55V11.28C16.82 11.15 15.12 10.3 14 8.96" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" aria-label="Discord">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 7.5C10.3 6.5 13.7 6.5 16.5 7.5L18 16.5C15.3 18.2 8.7 18.2 6 16.5L7.5 7.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 15C9.8 15.6 14.2 15.6 15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9.4 12H9.42M14.6 12H14.62" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="infinity-line" aria-hidden="true"></div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("particle-field");
+    const ctx = canvas.getContext("2d");
+    const particles = [];
+    const pointer = { x: 0.5, y: 0.35 };
+
+    function resizeCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(canvas.offsetWidth * ratio);
+      canvas.height = Math.floor(canvas.offsetHeight * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const count = Math.max(58, Math.floor(canvas.offsetWidth / 13));
+      particles.length = 0;
+      for (let i = 0; i < count; i += 1) {
+        particles.push({
+          x: Math.random() * canvas.offsetWidth,
+          y: Math.random() * canvas.offsetHeight,
+          vx: (Math.random() - 0.5) * 0.22,
+          vy: (Math.random() - 0.5) * 0.22,
+          r: Math.random() * 1.8 + 0.45,
+          alpha: Math.random() * 0.55 + 0.2
+        });
+      }
+    }
+
+    function drawParticles() {
+      const w = canvas.offsetWidth;
+      const h = canvas.offsetHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.lineWidth = 1;
+
+      particles.forEach((p, index) => {
+        const dx = (pointer.x * w - p.x) * 0.00018;
+        const dy = (pointer.y * h - p.y) * 0.00018;
+        p.vx += dx;
+        p.vy += dy;
+        p.vx *= 0.994;
+        p.vy *= 0.994;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(245, 245, 245, ${p.alpha})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = index + 1; j < particles.length; j += 1) {
+          const q = particles[j];
+          const dist = Math.hypot(p.x - q.x, p.y - q.y);
+          if (dist < 132) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(77, 124, 254, ${(1 - dist / 132) * 0.14})`;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("pointermove", (event) => {
+      pointer.x = event.clientX / window.innerWidth;
+      pointer.y = event.clientY / window.innerHeight;
+      document.body.style.setProperty("--mx", `${event.clientX}px`);
+      document.body.style.setProperty("--my", `${event.clientY}px`);
+    });
+
+    document.querySelectorAll(".product-card").forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `translateY(-8px) rotateX(${-y * 4}deg) rotateY(${x * 5}deg)`;
+      });
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+
+    resizeCanvas();
+    drawParticles();
+  </script>
+</body>
+</html>
