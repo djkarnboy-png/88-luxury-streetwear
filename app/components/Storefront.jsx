@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CartButton, CartDrawer, currency, useCart } from "./CartDrawer";
-import { featuredProduct, products } from "../data";
+import { featuredProduct, products, shoppingUrl } from "../data";
 
 function Nav({ cart, onCartOpen }) {
   return (
@@ -15,10 +15,14 @@ function Nav({ cart, onCartOpen }) {
       </Link>
       <nav aria-label="Primary navigation">
         <a href="#collection">Collection</a>
+        <a className="navShopLink" href={shoppingUrl}>Shop</a>
         <Link href="/product">Product</Link>
         <a href="#archive">Archive</a>
       </nav>
-      <CartButton count={cart.count} onClick={onCartOpen} />
+      <div className="navActions">
+        <a className="mobileShopButton" href={shoppingUrl}>Shop</a>
+        <CartButton count={cart.count} onClick={onCartOpen} />
+      </div>
     </header>
   );
 }

@@ -29,3 +29,5 @@ export const products = [
 ];
 
 export const featuredProduct = products[0];
+
+export const shoppingUrl = "https://8-8-c0dbh7mdo-kiki14.vercel.app";

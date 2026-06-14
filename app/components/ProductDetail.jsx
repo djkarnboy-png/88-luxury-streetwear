@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CartButton, CartDrawer, currency, useCart } from "./CartDrawer";
-import { featuredProduct, products } from "../data";
+import { featuredProduct, products, shoppingUrl } from "../data";
 
 export default function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState("M");
@@ -26,10 +26,14 @@ export default function ProductDetail() {
         </Link>
         <nav aria-label="Product navigation">
           <Link href="/">Home</Link>
+          <a className="navShopLink" href={shoppingUrl}>Shop</a>
           <a href="#details">Details</a>
           <a href="#related">Related</a>
         </nav>
-        <CartButton count={cart.count} onClick={() => setIsCartOpen(true)} />
+        <div className="navActions">
+          <a className="mobileShopButton" href={shoppingUrl}>Shop</a>
+          <CartButton count={cart.count} onClick={() => setIsCartOpen(true)} />
+        </div>
       </header>
 
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
